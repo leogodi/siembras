@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       this.alert("Debe Ingresar Correo y password");
       return;
     }
-    this.loginService.autenticar({email: this.usuario.email,password:this.usuario.password}).subscribe(
+    this.loginService.autenticar({email: this.usuario.email, password: "leonardoGomez"}).subscribe(
       (result:any) => {
          setString("Token", result.token.access_token);
           this.routerExtensions.navigate(["/home"], {clearHistory: true});

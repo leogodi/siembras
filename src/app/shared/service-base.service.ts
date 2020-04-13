@@ -9,18 +9,15 @@ import {getString} from "tns-core-modules/application-settings";
 
 export class ServiceBaseService {
   public serverUrl = "https://api-siembras-v3.herokuapp.com/api/";
-  public token:string;
 
   constructor(public http: HttpClient) { 
-
-    this.token = getString("Token");
   }
 
   private crearRequestHeader(conSeguridad: boolean){
       if(conSeguridad){
         return new HttpHeaders({
-          "Authotization":"Bearer "+ this.token,
-          "Content-Type":"application/json"
+          "Content-Type":"application/json",
+          "Authorization":"Bearer "+ getString("Token")
         });
       } 
 

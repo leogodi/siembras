@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SiembrasService} from "../../shared/siembras.service";
+import { Siembras } from '~/app/model/siembras';
 
 @Component({
   selector: 'ns-siembra',
@@ -10,12 +11,23 @@ export class SiembraComponent implements OnInit {
 
   constructor(private siembrasService:SiembrasService) { }
 
+  siembras: Array<Siembras>;
+
   ngOnInit(): void {
     this.obtenerSiembras();
   }
 
   obtenerSiembras(){
-    this.siembrasService.obtenerSiembras();
+    return this.siembrasService.obtenerSiembras().subscribe(
+      (result: any) => {
+          this.siembras = result.siembras;
+      }, (error) => {
+        this.alert(error.error.message)
+      }
+    );
   }
 
+  alert(message:string){
+    return alert({title: "Ejemplo", okButtonText: "OK", message: message});
+  }
 }

@@ -1,1 +1,9 @@
-<Button text="siembra works!" class="btn btn-primary"></Button>
+<GridLayout>
+    <ListView [items]="siembras">
+        <ng-template let-item="item">
+            <StackLayout>
+                <Label [text]="item.nombre"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>
