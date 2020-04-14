@@ -1,5 +1,8 @@
 <FlexboxLayout class="page">
     <StackLayout class="form">
+     <Image src="res://icon" stretch="aspectFill"></Image>
+     <Label class="header" text="Siembras"></Label>
+     <PreviousNextView>
         <GridLayout rows="auto,auto">
             <StackLayout row="0" class="input-field">
                 <TextField class="input" hint="Email" keyboardType="email"
@@ -12,7 +15,11 @@
                 [(ngModel)]="usuario.password" autocorrect="false" autocapitalizationType="none">
                 </TextField>
             </StackLayout>
+             <ActivityIndicator rowspan="3" [busy]="isBusy" color="#a4ca1c" 
+                    width="120" height="120" (busyChange)="onBusyChanged($event)">
+            </ActivityIndicator>
         </GridLayout>
-        <Button text="Ingresar" (tap)="ingresar()" class="btn btn-primary"></Button>
+    </PreviousNextView>
+        <Button [isEnabled]="!isBusy" text="Ingresar" (tap)="ingresar()" class="btn btn-primary"></Button>
     </StackLayout>
 </FlexboxLayout>

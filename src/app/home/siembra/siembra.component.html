@@ -1,3 +1,19 @@
+<ActionBar title="Siembras">
+    <ActionItem
+    android.systemIcon="ic_menu_camera" 
+    ios.position="left"
+    android.position="left"
+    (tap) ="irCamara()" text="Cámara">
+    </ActionItem>
+    <ActionItem
+    android.systemIcon="ic_lock_power_off" 
+    ios.position="right"
+    android.position="right"
+    (tap) ="salir()" text="Salir">
+    </ActionItem>
+
+</ActionBar>
+
 <GridLayout>
     <ListView [items]="siembras">
         <ng-template let-item="item">

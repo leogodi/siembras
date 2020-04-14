@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {SiembrasService} from "../../shared/siembras.service";
 import { Siembras } from '~/app/model/siembras';
+import { RouterExtensions} from 'nativescript-angular/router';
+import { clear } from 'tns-core-modules/application-settings/application-settings';
 
 @Component({
   selector: 'ns-siembra',
@@ -9,7 +11,7 @@ import { Siembras } from '~/app/model/siembras';
 })
 export class SiembraComponent implements OnInit {
 
-  constructor(private siembrasService:SiembrasService) { }
+  constructor(private siembrasService:SiembrasService, private routerExtensions: RouterExtensions) { }
 
   siembras: Array<Siembras>;
 
@@ -29,5 +31,15 @@ export class SiembraComponent implements OnInit {
 
   alert(message:string){
     return alert({title: "Ejemplo", okButtonText: "OK", message: message});
+  }
+
+  salir(){
+    clear();
+    this.routerExtensions.navigate(["/login"], {clearHistory: true});
+  }
+
+  irCamara()
+  {   
+    this.routerExtensions.navigate(["/home/camara"],{});
   }
 }
