@@ -13,13 +13,25 @@ export class SiembraComponent implements OnInit {
 
   constructor(private siembrasService:SiembrasService, private routerExtensions: RouterExtensions) { }
 
-  siembras: Array<Siembras>;
+  siembras: Array<any>;
+  lucesEncendidas:boolean = false;
 
   ngOnInit(): void {
     this.obtenerSiembras();
   }
 
   obtenerSiembras(){
+    return this.siembrasService.obtenerSiembras().subscribe(
+      (result: any) => {
+         console.log(result)
+          this.siembras = result.lecturaSiembras;
+      }, (error) => {
+        this.alert(error.error.message)
+      }
+    );
+  }
+
+  obtener(){
     return this.siembrasService.obtenerSiembras().subscribe(
       (result: any) => {
           this.siembras = result.siembras;
@@ -30,7 +42,7 @@ export class SiembraComponent implements OnInit {
   }
 
   alert(message:string){
-    return alert({title: "Ejemplo", okButtonText: "OK", message: message});
+    return alert({title: "Notificación", okButtonText: "OK", message: message});
   }
 
   salir(){
@@ -41,5 +53,20 @@ export class SiembraComponent implements OnInit {
   irCamara()
   {   
     this.routerExtensions.navigate(["/home/camara"],{});
+  }
+
+  encenderLuces(){
+    this.lucesEncendidas = !this.lucesEncendidas;
+    return this.siembrasService.encenderLucesSiembras(this.lucesEncendidas).subscribe(
+      (result: any) => {
+          if(this.lucesEncendidas){
+            this.alert("Luces encendidas")
+          }else{
+            this.alert("Luces apagadas")
+          }
+      }, (error) => {
+        this.alert(error.error.message)
+      }
+    );
   }
 }

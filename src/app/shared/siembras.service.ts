@@ -13,6 +13,13 @@ export class SiembrasService extends ServiceBaseService {
   }
 
   obtenerSiembras(){
-    return this.metodoGet("siembras", true)
+    return this.metodoGet("LecturaSiembras", true)
+  }
+
+  encenderLucesSiembras(encender:boolean){
+    if(encender){
+      return this.metodoPostPy("",{"state":"1"},false );
+    }
+    return this.metodoPostPy("",{"state":"0"},false );
   }
 }

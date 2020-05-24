@@ -8,7 +8,8 @@ import {getString} from "tns-core-modules/application-settings";
 })
 
 export class ServiceBaseService {
-  public serverUrl = "https://api-siembras-v3.herokuapp.com/api/";
+  public serverUrlSiembras = "https://api-siembras-v3.herokuapp.com/api/";
+  public serverUrlPy = "https://tappable-redpanda-1593.dataplicity.io/led/green/";
 
   constructor(public http: HttpClient) { 
   }
@@ -26,11 +27,16 @@ export class ServiceBaseService {
 
   metodoPost(url: string, data:any, tieneSeguridad:boolean){
     let headers = this.crearRequestHeader(tieneSeguridad);
-    return this.http.post(this.serverUrl+url, data, {headers: headers});
+    return this.http.post(this.serverUrlSiembras+url, data, {headers: headers});
   }
 
   metodoGet(url:string,tieneSeguridad:boolean){
     let headers = this.crearRequestHeader(tieneSeguridad);
-    return this.http.get(this.serverUrl+url, {headers: headers});
+    return this.http.get(this.serverUrlSiembras+url, {headers: headers});
+  }
+
+  metodoPostPy(url: string, data:any, tieneSeguridad:boolean){
+    let headers = this.crearRequestHeader(tieneSeguridad);
+    return this.http.post(this.serverUrlPy, data, {headers: headers});
   }
 }

@@ -1,15 +1,7 @@
 <ActionBar title="Siembras">
-    <ActionItem
-    android.systemIcon="ic_menu_camera" 
-    ios.position="left"
-    android.position="left"
-    (tap) ="irCamara()" text="Cámara">
+    <ActionItem android.systemIcon="ic_menu_camera" ios.position="left" android.position="left" (tap)="irCamara()" text="Cámara">
     </ActionItem>
-    <ActionItem
-    android.systemIcon="ic_lock_power_off" 
-    ios.position="right"
-    android.position="right"
-    (tap) ="salir()" text="Salir">
+    <ActionItem android.systemIcon="ic_lock_power_off" ios.position="right" android.position="right" (tap)="salir()" text="Salir">
     </ActionItem>
 
 </ActionBar>
@@ -18,8 +10,12 @@
     <ListView [items]="siembras">
         <ng-template let-item="item">
             <StackLayout>
-                <Label [text]="item.nombre"></Label>
+                <Label [text]="item.nombre">Nombre:</Label>
+                <Label [text]="item.cedula">Cedula:</Label>
+                <Label [text]="item.siembra">Siembra:</Label>
+                <Label [text]="item.fecha">Fecha:</Label>
             </StackLayout>
         </ng-template>
     </ListView>
+    <Button text="Encender luces" class="btn btn-primary btn-active" (tap)="encenderLuces()"></Button>
 </GridLayout>
