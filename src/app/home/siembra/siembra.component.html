@@ -1,21 +1,23 @@
-<ActionBar title="Siembras">
+<ActionBar title="Lect Siembras" backgroundColor="#a4ca1c">
     <ActionItem android.systemIcon="ic_menu_camera" ios.position="left" android.position="left" (tap)="irCamara()" text="Cámara">
+    </ActionItem>
+    <ActionItem android.systemIcon="ic_dialog_info" ios.position="right" android.position="right" (tap)="encenderLuces()" text="Encender luces">
     </ActionItem>
     <ActionItem android.systemIcon="ic_lock_power_off" ios.position="right" android.position="right" (tap)="salir()" text="Salir">
     </ActionItem>
-
 </ActionBar>
 
-<GridLayout>
-    <ListView [items]="siembras">
-        <ng-template let-item="item">
-            <StackLayout>
-                <Label [text]="item.nombre">Nombre:</Label>
-                <Label [text]="item.cedula">Cedula:</Label>
-                <Label [text]="item.siembra">Siembra:</Label>
-                <Label [text]="item.fecha">Fecha:</Label>
-            </StackLayout>
-        </ng-template>
-    </ListView>
-    <Button text="Encender luces" class="btn btn-primary btn-active" (tap)="encenderLuces()"></Button>
+<GridLayout rows="*, auto" backgroundColor="#F9E1C9">
+    <StackLayout row="0">
+        <ListView [items]="siembras">
+            <ng-template let-item="item">
+                <StackLayout>
+                    <Label [text]="item.nombre">Nombre:</Label>
+                    <Label [text]="item.cedula">Cedula:</Label>
+                    <Label [text]="item.siembra">Siembra:</Label>
+                    <Label [text]="item.fecha">Fecha:</Label>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
 </GridLayout>

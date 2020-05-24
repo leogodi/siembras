@@ -1,1 +1,17 @@
 /* Add mobile styles for the component here.  */
+
+.btnluces {
+    position: relative;
+    bottom: -120px;
+}
+
+.miBoton {
+    android-elevation: 8;
+    background-color: whitesmoke;
+    border-color: darkolivegreen;
+    border-radius: 20;
+    border-width: 1;
+    color: lightseagreen;
+    font-size: 18;
+    font-weight: bold;
+}
